@@ -1,7 +1,7 @@
 #include "ascii_converter.h"
 
-const char ascii_table[34] = " `.,'-~:;*+\"^_<=>!?|/\\()[]{}%&@$#";
-//const char ascii_table[34] = "#$@&%}{][)(\\/|?!>=<_^\"+*;:~-',.` "; 
+//const char ascii_table[34] = " `.,'-~:;*+\"^_<=>!?|/\\()[]{}%&@$#";
+const char ascii_table[34] = "#$@&%}{][)(\\/|?!>=<_^\"+*;:~-',.` "; 
 const int table_length = 33; // 33 characters + \0
 
 float random_noise(int min, int max);
@@ -19,7 +19,7 @@ char grayscale_to_ascii_noise(uint8_t strength, unsigned int noise_strength) {
 }
 
 char grayscale_to_ascii(uint8_t strength) {
-	printf("%d", strength);
+	//printf(" [%d]", strength);
 	float scalar_value = (float) strength / 255;
 	return ascii_table[(int) (scalar_value * table_length)];
 }

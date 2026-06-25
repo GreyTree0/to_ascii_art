@@ -46,14 +46,17 @@ int main() {
 
 	jpeg_to_array(image_buffer, path, /*grayscale*/ 1);
 	
-	
+	FILE * output_file = fopen("./test.txt", "w");	
 	for(int i = 0; i < size.height; ++i) {
 		for(int j = 0; j < size.width; ++j) {
-			char c = grayscale_to_ascii(image_buffer[i]); // det är en header först eller?
-			//printf("%c", c);
+			char c = grayscale_to_ascii(image_buffer[i * size.width + j]);
+			fprintf(output_file, "%c", c);
+			printf("%c", c);
 		}
+		fprintf(output_file, "\n");
 		printf("\n");
 	}
+	fclose(output_file);
 	
 
 	array_to_jpeg(image_buffer, "./compressed_image.jpeg", size, 1);

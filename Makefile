@@ -14,6 +14,6 @@ all: $(o_files)
 -include $(dependencies)
 
 clean:
-	rm -fr ./build image_to_ascii compressed_image.jpeg
+	rm -fr ./build image_to_ascii compressed_image.jpeg test.txt
 
 
