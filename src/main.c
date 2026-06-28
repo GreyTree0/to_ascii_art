@@ -46,16 +46,26 @@ int main() {
 
 	jpeg_to_array(image_buffer, path, /*grayscale*/ 1);
 	
+	// make below a function.
+	// check if termial supports colors.
+
 	FILE * output_file = fopen("./test.txt", "w");	
 	for(int i = 0; i < size.height; ++i) {
 		for(int j = 0; j < size.width; ++j) {
-			char c = grayscale_to_ascii(image_buffer[i * size.width + j]);
-			fprintf(output_file, "%c", c);
+			
+			uint8_t c_val = image_buffer[i * size.width + j];
+			char c = grayscale_to_ascii(c_val);
+			char* ansi_col = get_ansi_color(&c_val, component_size);
+
+			fprintf(output_file, "%s%c", ansi_col, c);
 			printf("%c", c);
 		}
 		fprintf(output_file, "\n");
 		printf("\n");
 	}
+	fprintf(output_file, "\e[0m");
+	printf("\e[0m");
+
 	fclose(output_file);
 	
 

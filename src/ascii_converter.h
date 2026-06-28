@@ -17,7 +17,8 @@ char grayscale_to_ascii_noise(uint8_t stregth, unsigned int noise_strength);
 
 char grayscale_to_ascii(uint8_t stregth);
 
-
+// Operates on both grayscale and rgb values, just as byte arrays of length 1 resp. 3.
+char* get_ansi_color(uint8_t* color_values, bool grayscale);
 
 
 
